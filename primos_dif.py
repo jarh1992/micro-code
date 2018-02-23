@@ -40,4 +40,3 @@ if __name__ == '__main__':
         array_primos = res
         if i == '1':
             flag = False
-    print(res)
