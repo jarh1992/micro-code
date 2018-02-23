@@ -14,7 +14,6 @@ def gen_primos(num, array_base_primos):
                 break
         if v == 1:
             array_base_primos.append(n)
-            # print(str(a) + ')', n)
             a += 1
             b = n
         n += 2
