@@ -1,5 +1,5 @@
 """
-diferencia entre primos consecutivos
+promedio entre 2 primos consecutivos
 """
 
 array_base_primos = [2, 3, 5]
