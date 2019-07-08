@@ -8,8 +8,13 @@ def getBases(num_sitios, pos_bases):
     ----------
     num_sitios: int
         Numero de sitios en el lattice
-    pos_bases: array[1D]
+    pos_bases: list[1D]
         posicion (indice) de las bases
+    
+    Returns
+    -------
+    list
+        bases para tracear
     '''
     b = []
     for i in range(0, pow(2, num_sitios)):
@@ -32,8 +37,13 @@ def compareBases(b1, b2, pos_bases):
         Base 1
     b1: str
         Base 2
-    pos_bases: array[1D]
+    pos_bases: list[1D]
         posicion (indices) de las bases
+    
+    Returns
+    -------
+    bool
+        Si coinciden o no las bases
     '''
     count = 0
     for i in pos_bases:
@@ -51,8 +61,13 @@ def compareAntibase(b1, b2, sitios):
         Base 1
     b1: str
         Base 2
-    pos_bases: array[1D]
+    pos_bases: list[1D]
         posicion (indices) de las bases
+    
+    Returns
+    -------
+    bool
+        Si coinciden o no las bases
     '''
     count = 0
     for i in sitios:
@@ -62,7 +77,7 @@ def compareAntibase(b1, b2, sitios):
     
 def parcialTrace(m, num_sitios, *sitios):
     '''
-    Funcion para realizar traza parcial y generar matriz de densidad reducida
+    Funcion para realizar traza parcial
     
     Parameters
     ----------
@@ -70,8 +85,13 @@ def parcialTrace(m, num_sitios, *sitios):
         Matriz de densidad
     num_sitios: int
         Numero de sitios en el lattice
-    sitios: *int 
+    sitios: int or tuple of int
         sitios sobre los cuales se hara la traza parcial
+    
+    Returns
+    -------
+    list
+        Matriz de densidad reducida
     '''
     mr = []
     num_bases = num_sitios - len(sitios)
@@ -80,8 +100,7 @@ def parcialTrace(m, num_sitios, *sitios):
         if j+1 not in sitios:
             pos_bases.append(j)
     
-    bases = [f"{i:b}".zfill(num_bases) for i in range(0, pow(2,num_bases))]
-    #bases = getBases(num_sitios, pos_bases)
+    bases = getBases(num_sitios, pos_bases)
     od = OrderedDict((i, OrderedDict((j, 0) for j in bases)) for i in bases)
     for i, f in od.items():
         mr_row = []
